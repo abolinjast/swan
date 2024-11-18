@@ -1,0 +1,19 @@
+# /usr/local/etc/ipsec.conf
+
+# ipsec.conf - strongSwan configuration file
+
+config setup
+    charondebug="ike 2, knl 2, cfg 2"  # Debugging level, optional
+
+# Connection definitions
+conn my-ipsec-tunnel
+    authby=secret                   # Use pre-shared key authentication
+    left=192.168.1.1                # Local IP address
+    leftsubnet=10.0.0.0/24          # Local protected subnet
+    right=192.168.2.1               # Remote IP address
+    rightsubnet=10.1.0.0/24         # Remote protected subnet
+    ike=aes256-sha256-modp2048      # Phase 1 proposal
+    esp=aes256-sha256               # Phase 2 proposal
+    keyexchange=ikev2               # Use IKEv2
+    auto=start                      # Automatically start the connection
+
