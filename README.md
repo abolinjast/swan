@@ -3,8 +3,10 @@
 It's simple, answer the questions and Swan will generate configuration files for you
 
 
-License      
+License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Contributing 
+Contributing
+
 Contributions are welcome! Feel free to submit a pull request or open an issue if you have ideas for improvement.
