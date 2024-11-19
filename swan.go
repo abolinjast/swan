@@ -4,10 +4,17 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+    "strings"
 
 	"github.com/fatih/color"
 )
 
+func getInput(prompt string, r *bufio.Reader) (string, error) {
+    fmt.Print(prompt)
+    input, err := r.ReadString('\n')
+
+    return strings.TrimSpace(input), err
+}
 
 func main() {
     ipsecConfPath := "/usr/local/etc/ipsec.conf"
@@ -20,17 +27,11 @@ func main() {
     color.Set(color.FgGreen)    
 
     fmt.Println("Welcome to the swan helper")
-    fmt.Println("Enter the Local IP Address:")
-    left, _ := reader.ReadString('\n')
-    fmt.Println("Enter the local subnet:")
-    leftsubnet, _ := reader.ReadString('\n')
-    fmt.Println("Enter the Remote IP Address:")
-    right, _ := reader.ReadString('\n')
-    fmt.Println("Enter the remote subnet:")
-    rightsubnet, _ := reader.ReadString('\n')
-    fmt.Println("Enter the Pre Shared Key that you wish to use:")
-    preSharedKey, _ := reader.ReadString('\n')
-    
+    left, _ := getInput("Enter the Local IP Address: ", reader)
+    leftsubnet, _ := getInput("Enter the local subnet: ", reader)
+    right, _ := getInput("Enter the Remote IP Address: ", reader)
+    rightsubnet, _ := getInput("Enter the remote subnet: ", reader)
+    preSharedKey, _ := getInput("Enter the Pre Shared Key that you wish to use: ", reader)
     color.Unset()
 
 
